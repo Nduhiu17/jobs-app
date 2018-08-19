@@ -21,3 +21,4 @@ script:
   - pytest --cov=.
 after_success:
   - coverage run -m pytest
+  - coveralls
