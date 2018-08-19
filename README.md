@@ -1,5 +1,5 @@
 ### Jobs App
-
+[![Build Status](https://travis-ci.org/Nduhiu17/jobs-app.svg?branch=develop)](https://travis-ci.org/Nduhiu17/jobs-app)
 #### Description
 It is an API that enables a job seeker to search for the recent advertised jobs in the internet and apply for it.
 
