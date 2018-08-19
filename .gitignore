@@ -2,6 +2,7 @@
 __pycache__/
 virtual/
 start.sh
-.pytest_cache/
 .vscode/
+.vscode/
+.pytest_cache/
 app/jobs_test.sqlite

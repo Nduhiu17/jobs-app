@@ -1,4 +1,5 @@
 import os
+
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 
@@ -7,7 +8,6 @@ class Config(object):
     TESTING = False
     CSRF_ENABLED = True
     SECRET_KEY = 'this-is-secret'
-    SQLALCHEMY_DATABASE_URI = 'postgresql://nduhiu:password:localhost:5432/jobs_db'
 
 
 class ProductionConfig(Config):
@@ -20,9 +20,23 @@ class StagingConfig(Config):
 
 
 class DevelopmentConfig(Config):
+    try:
+        SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL']
+    except:
+        pass
     DEVELOPMENT = True
     DEBUG = True
+    SQLALCHEMY_TRACK_MODIFICATIONS = True
 
 
 class TestingConfig(Config):
     TESTING = True
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'jobs_test.sqlite')
+
+
+config_environments = {
+    'production': ProductionConfig,
+    'development': DevelopmentConfig,
+    'testing': TestingConfig,
+    'default': DevelopmentConfig
+}
