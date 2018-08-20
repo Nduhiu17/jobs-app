@@ -4,7 +4,7 @@ from app import db
 class Category(db.Model):
     # __tablename__ = 'categories'
     id = app.db.Column(app.db.Integer, primary_key=True)
-    name = db.Column(db.String(50),unique=True)
+    name = db.Column(db.String(50))
 
 class Job(db.Model):
     # __tablename__ = 'jobs'
@@ -17,7 +17,7 @@ class Job(db.Model):
     date_created = db.Column(
         db.TIMESTAMP, server_default=db.func.current_timestamp(),
         nullable=False)
-    application_deadline = db.Column(db.String(80),unique=True)
+    application_deadline = db.Column(db.String(80))
 
     def __init__(self, name, category_id,employer_id,title,description,date_created,application_deadline):
         self.name = name
