@@ -16,7 +16,7 @@ install:
 # command to run tests
 script:
   - pytest
-  - coverage run --source=Api_v1.app.app -m pytest  && coverage report
+  - coverage run -m pytest  && coverage report
 
 after_success:
   - coverage run -m pytest
