@@ -9,15 +9,15 @@ services:
 before_script:
   - psql -c 'create database jobs_test;' -U postgres
 
-before_install:
-    - pip install pytest pytest-cov
-    - pip install coveralls
 
 install:
 - pip install -r requirements.txt
+- pip install coveralls
 # command to run tests
 script:
   - pytest
-  - pytest --cov=.
+  - coverage run -m pytest  && coverage report
+
 after_success:
   - coverage run -m pytest
+  - coveralls
