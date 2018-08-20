@@ -6,13 +6,20 @@ python:
 services:
   - postgresql
 
+secure: Td4r2gL0QhRCVq2A9/RL0o+NqkNjRnF3Uu+HmHDnWVaZCow2r3A7AgWsRLIGZ/qVswsYOTFEWOal9NxTiylTZyKJKn07Hg4iw9172Yg7SwHullq4+2KmmFPJeuykHa1Xq888FbmGO6pxS0gwC4oo6G3NL+xJxH1DYmSk5FBu1E4T1WGMKVROft+HaxSWCQybqhOqEicAFJMpNQNhqHhlT7Z6fgjeYxAmwpzKigfI5XvU87pnQFRKjxwf+Fmy4eFOyFkXTwj8eecC6MC9Evz9ectrTCBMPTlk8s0K0lcLKPd641vEQZbdzkM16vlxiwtB/xKd7AQOui9T8m3iN/VcaoXv8iwQQTLwPz4N2eyWiMc/XwTM4h+itngoQb3Ek0kz/2f+ia9H+Wealo4ZQtVmLzUhtjwYMrcTrEU15G30hb1eM7d5uqjDXQXFTYHejP0LGR/dsLYR/ghzkzVCvuuEBInwkP3UUR+CDxmYUov/Ux1WQPM0ZJYhwk2dsaqUYwt3IQh6CR2tg4atCJ5ZkrUtVW2e7Z/O8q1sQzXQiTnEnphnYZSCr5PSAMiR+UT76KO4yVrFw+/F8EJJonaBBxIhZ/LzVQp3zAkQ+Jq8adOdGIWZ/Wt1j6+XPEIq+CA1+B6cdIvDe/nEbYcGoViCP0gPSQ1H7w68u1uhCceF5ZvC84k=
+
 before_script:
   - psql -c 'create database jobs_test;' -U postgres
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
 
 
 install:
 - pip install -r requirements.txt
 - pip install coveralls
+- pip install codeclimate-test-reporter
+
 # command to run tests
 script:
   - pytest
@@ -21,3 +28,4 @@ script:
 after_success:
   - coverage run -m pytest
   - coveralls
+  - codeclimate-test-reporter
