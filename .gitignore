@@ -1,0 +1,8 @@
+.idea/
+__pycache__/
+virtual/
+start.sh
+.vscode/
+.vscode/
+.pytest_cache/
+app/jobs_test.sqlite

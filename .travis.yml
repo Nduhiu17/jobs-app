@@ -1,0 +1,23 @@
+#Prgramming language used
+language: python
+#Language version
+python:
+  - "3.6"
+services:
+  - postgresql
+
+before_script:
+  - psql -c 'create database jobs_test;' -U postgres
+
+
+install:
+- pip install -r requirements.txt
+- pip install coveralls
+# command to run tests
+script:
+  - pytest
+  - coverage run -m pytest  && coverage report
+
+after_success:
+  - coverage run -m pytest
+  - coveralls
