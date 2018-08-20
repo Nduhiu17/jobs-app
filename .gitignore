@@ -7,4 +7,6 @@ start.sh
 .pytest_cache/
 app/jobs_test.sqlite
 travis.log
+app/__init__.pyc
+
 
