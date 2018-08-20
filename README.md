@@ -9,5 +9,4 @@ Clone the repository:
 ```git clone https://github.com/Nduhiu17/jobs-app.git```
 
 Check out to the server branch by:
-
 $git checkout develop
