@@ -5,7 +5,7 @@ python:
   - "3.6"
 
 virtual:
-  system_site_packages: True
+  system_site_packages: False
 
 services:
   - postgresql
