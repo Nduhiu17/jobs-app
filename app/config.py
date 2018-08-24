@@ -31,7 +31,10 @@ class DevelopmentConfig(Config):
 
 class TestingConfig(Config):
     TESTING = True
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'jobs_test.sqlite')
+    try:
+        SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL_TEST']
+    except:
+        pass
 
 
 config_environments = {
